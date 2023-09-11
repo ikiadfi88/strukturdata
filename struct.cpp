@@ -92,94 +92,75 @@ void hapusData() {
     cout << "9. Cita-Cita" << endl;
     cout << "10. Hobi" << endl;
     cout << "11. Hapus Data Mahasiswa (Berdasarkan NRP)" << endl;
-    cout << "12. Hapus Semua Data Mahasiswa" << endl;
     cout << "Pilihan (Masukkan Angka): ";
     int pilihan;
     cin >> pilihan;
     cin.ignore();
 
+    cout << "Masukkan input data yang ingin dihapus: ";
     string inputHapus;
+    getline(cin, inputHapus); 
     char nrpditemukan;
     bool hapusemua = true;
 
     bool ditemukan = false;
     for (Mahasiswa &mahasiswa : dataMahasiswa) {
         switch (pilihan) {
-            case 1:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 1: 
                 if (mahasiswa.nama == inputHapus) {
                     mahasiswa.nama = "";
                     ditemukan = true;
                 }
                 break;
-            case 2:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 2: 
                 if (mahasiswa.nrp == inputHapus) {
                     mahasiswa.nrp = "";
                     ditemukan = true;
                 }
                 break;
-            case 3:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 3: 
                 if (mahasiswa.jurusan == inputHapus) {
                     mahasiswa.jurusan = "";
                     ditemukan = true;
                 }
                 break;
-            case 4:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 4: 
                 if (mahasiswa.fakultas == inputHapus) {
                     mahasiswa.fakultas = "";
                     ditemukan = true;
                 }
                 break;
-            case 5:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 5: 
                 if (mahasiswa.alamat == inputHapus) {
                     mahasiswa.alamat = "";
                     ditemukan = true;
                 }
                 break;
-            case 6:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 6: 
                 if (mahasiswa.asal == inputHapus) {
                     mahasiswa.asal = "";
                     ditemukan = true;
                 }
                 break;
-            case 7:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 7: 
                 if (mahasiswa.ttl == inputHapus) {
                     mahasiswa.ttl = "";
                     ditemukan = true;
                 }
                 break;
-            case 8:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus); 
+            case 8: 
                 if (mahasiswa.gender == inputHapus) {
                     mahasiswa.gender = "";
                     ditemukan = true;
                 }
                 break;
-            case 9:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus);    
+            case 9:    
                 if (mahasiswa.cita == inputHapus) {
                     mahasiswa.cita = "";
                     ditemukan = true;
                 }
                 break;
             case 10:
-                cout << "Masukkan input data yang ingin dihapus: ";
-                getline(cin, inputHapus);
                 if (mahasiswa.hobi == inputHapus) {
                     mahasiswa.hobi = "";
                     ditemukan = true;
@@ -187,8 +168,6 @@ void hapusData() {
                 break;
             case 11:
                 for (auto it = dataMahasiswa.begin(); it != dataMahasiswa.end();) {
-                    cout << "Masukkan input data yang ingin dihapus: ";
-                    getline(cin, inputHapus);
                     if (mahasiswa.nrp == inputHapus) {
                         it = dataMahasiswa.erase(it);
                         nrpditemukan = true;
@@ -196,22 +175,6 @@ void hapusData() {
                     } else {
                         ++it;
                     }
-                }
-                break;
-            case 12:
-                if (dataMahasiswa.empty()) {
-                    cout << "Tidak ada data mahasiswa untuk dihapus." << endl;
-                    return;
-                }
-                char konfirmasi;
-                cout << "Apakah Anda yakin ingin menghapus semua data mahasiswa? (y/n): ";
-                cin >> konfirmasi;
-
-                if (konfirmasi == 'y' || konfirmasi == 'Y') {
-                    dataMahasiswa.clear(); // Menghapus semua data mahasiswa
-                    cout << "Data yang sesuai dengan input telah dihapus." << endl;
-                    hapusemua = false;  
-                } else {
                 }
                 break;
             default:
@@ -223,7 +186,7 @@ void hapusData() {
     if (ditemukan) {
         cout << "Data yang sesuai dengan input telah dihapus." << endl;
     } else {
-        if(!nrpditemukan && hapusemua == true){
+        if(!nrpditemukan){
             cout << "Tidak ada data yang sesuai dengan input yang dimasukkan." << endl;
         }
         
@@ -253,10 +216,11 @@ void ubahData() {
     int pilihan;
     cin >> pilihan;
     cin.ignore();
-
+    cout << "Masukkan data input awal: ";
     string inputUbah;
-    
+    getline(cin, inputUbah);
     bool ditemukan = false;
+
     for (Mahasiswa &mahasiswa : dataMahasiswa) {
         switch (pilihan) {
             case 1:
